@@ -2,10 +2,16 @@
 :root {
     font-size: 62.5%;
     color: rgb(25, 46, 69);
+    --brand: #B46D42;
+    --ink: #192E45;
+    --paper: #EFE5D2;
 }
 * {
     margin: 0%;
     padding: 0%;
+}
+section {
+    padding-block: clamp(3rem, 6vw, 6rem);
 }
 body{
     height: 100%;
@@ -24,6 +30,12 @@ body{
     color: rgb(25, 46, 69);
     text-shadow: 0.5px 0.5px 2px rgb(180, 109, 66);
     
+}
+.navbar-toggler {
+    border-color: rgba(0, 0, 0, .2);
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(25,46,69,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 .navbar {
     min-height: 7rem;
@@ -67,6 +79,13 @@ body{
     background-repeat: no-repeat;
     padding-bottom: 5rem;
 } 
+.header_container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(239, 229, 210, 0.2), rgba(25, 46, 69, 0.35));
+    pointer-events: none;
+}
 .header__box {
     position: absolute;
     top: 50%;
@@ -139,6 +158,14 @@ body{
     font-weight: 200;
     font-style: normal;
 }
+.chiave_violino {
+    position: absolute;
+    left: 60%;
+    top: 20%;
+    height: 900px;
+    break-inside: avoid;    
+    pointer-events: none;
+}
 .main {
     font-size: 3rem;
     font-family: "Lora", serif;
@@ -176,9 +203,9 @@ body{
 #contatti input:focus,
 #contatti textarea:focus,
 #contatti select:focus {
-    outline: none;
-    border-bottom: 2px solid rgb(9, 22, 32);
-    background-color: rgb(239, 229, 210);
+    outline: 3px solid rgba(180, 109, 66, .35);
+    border-bottom-color: var(--ink);
+    box-shadow: 0 0 0 4px rgba(180, 109, 66, .15);
 }
 #contatti button {
     font-size: 1.6rem;
@@ -216,7 +243,14 @@ body{
 .map-container iframe {
     pointer-events: none;
 }
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--brand);
+    outline-offset: 3px;
+}
 
+html{ scroll-behavior:smooth; }
+#contatti{ scroll-margin-top: 8rem; }
 @keyframes moveInRight {
     0% {
         transform: translateX(-10rem) translateY(0);
@@ -266,6 +300,10 @@ body{
             font-size: 2.3rem;
             letter-spacing: 0.15rem;
         }
+
+        .chiave_violino {
+            display: none;
+        }
 }
 
 @media only screen and (max-width: 768px) {
@@ -278,6 +316,10 @@ body{
     .header__sub {
         font-size: 2rem;
         letter-spacing: 0.15rem;
+    }
+    .chiave_violino {
+        display: none;
+
     }
 }
 
@@ -299,5 +341,8 @@ body{
         position: relative;
         height: 300px;
         display: block;
+    }
+    .chiave_violino {
+        display: none;
     }
 }
